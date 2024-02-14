@@ -39,6 +39,7 @@ def send_data():
     msg = JointState()
     msg.name = ['joint1', 'joint2']
     msg.position = [Joint1_Bar.get(),Joint2_Bar.get()]
+    msg.header.stamp = rospy.Time.now();
     Jointpub.publish(msg)
     pub_Joint1.publish(Joint1_Bar.get())
     pub_Joint2.publish(Joint2_Bar.get())
@@ -49,7 +50,7 @@ pub_Joint1 = rospy.Publisher("Topic_Input_Joint1", Int16, queue_size = 10)
 pub_Joint2 = rospy.Publisher("Topic_Input_Joint2", Int16, queue_size = 10)
 sub_encode = rospy.Subscriber("Topic_Feedback_encode", Int16, callback = read_encoder)
 sub_poten = rospy.Subscriber("Topic_Feedback_poten", Int16, callback = read_poten)
-Jointpub = rospy.Publisher("joint_state", JointState, queue_size = 10)
+Jointpub = rospy.Publisher("joint_states", JointState, queue_size = 10)
 
 gui = tk.Tk()
 gui.title('RobotArm')
