@@ -43,7 +43,7 @@
         <geometry>
             <mesh filename="package://robot_description/STL/link2.stl" scale="0.001 0.001 0.001"/>
         </geometry>
-        <origin xyz="0.145 -0.045 0.125" rpy="1.56 0 1.56"/>
+        <origin xyz="0.145 0.04 0.125" rpy="1.56 0 1.56"/>
     </visual>
 
     <inertial>

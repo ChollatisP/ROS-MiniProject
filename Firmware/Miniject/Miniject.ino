@@ -37,7 +37,7 @@ void stepcontrol(const std_msgs::Int16& cmd_msg)
   int value = cmd_msg.data;
   if (value > laststeppos)
   {
-    digitalWrite(dirPin,HIGH);
+    digitalWrite(dirPin,LOW);
     int timecheck = value-laststeppos;
     for(int x = 0; x < timecheck; x++) 
     {
@@ -49,7 +49,7 @@ void stepcontrol(const std_msgs::Int16& cmd_msg)
   }
   else if (value < laststeppos)
   {
-    digitalWrite(dirPin,LOW);
+    digitalWrite(dirPin,HIGH);
     int timecheck = laststeppos-value;
     for(int x = 0; x < timecheck; x++) 
     {
@@ -94,9 +94,9 @@ void loop() {
   rotating = true;  // reset the debouncer
   if (lastReportedPos != encoderPos) {
     int newencoderPos;
-    if (encoderPos>=180)
+    if (encoderPos>=100)
     {
-      newencoderPos = 180;
+      newencoderPos = 100;
     }
     else if (encoderPos<=0)
     {

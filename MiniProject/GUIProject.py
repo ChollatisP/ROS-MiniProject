@@ -10,12 +10,8 @@ from std_msgs.msg import Int16
 rospy.init_node("RobotArm_Control")
 rate = rospy.Rate(10)
 mode = 1
-'''rate.sleep()
 
-def Talker(val):
-	cmd_val = Int16(val)
-	rospy.loginfo(cmd_val)
-	pub.publish(cmd_val)'''
+
 def Mode():
     global mode
     mode = ~mode
@@ -23,26 +19,37 @@ def Mode():
 def read_encoder(encode_val):
     sensor_1_read = encode_val.data
     if mode==1:
-        Joint1_Bar.set(sensor_1_read)
+        Joint1_Bar.set(sensor_1_read*10)
 def read_poten(potenval):
     sensor_2_read = potenval.data
     if mode==1:
         Joint2_Bar.set(sensor_2_read)
 
 def reset():
-    Joint1_Bar.set(0)
     Joint2_Bar.set(0)
+    Joint1_Bar.set(0)
 
 def send_data():
     show_1.config(text= Joint1_Bar.get())
     show_2.config(text= Joint2_Bar.get())
     msg = JointState()
     msg.name = ['joint1', 'joint2']
-    msg.position = [Joint1_Bar.get()*10**-3,Joint2_Bar.get()*10**-3]
+    msg.position = [(Joint1_Bar.get()*0.056)*10**-3,-Joint2_Bar.get()*10**-3]
     msg.header.stamp = rospy.Time.now()
     Jointpub.publish(msg)
-    pub_Joint1.publish(Joint1_Bar.get())
     pub_Joint2.publish(Joint2_Bar.get())
+    pub_Joint1.publish(Joint1_Bar.get())
+
+def setup():
+    show_1.config(text= Joint1_Bar.get())
+    show_2.config(text= Joint2_Bar.get())
+    msg = JointState()
+    msg.name = ['joint1', 'joint2']
+    msg.position = [(Joint1_Bar.get()*0.056)*10**-3,-Joint2_Bar.get()*10**-3]
+    msg.header.stamp = rospy.Time.now()
+    Jointpub.publish(msg)
+    pub_Joint2.publish(0)
+    pub_Joint1.publish(0)
 
 
 
@@ -58,7 +65,7 @@ gui.geometry("660x500")
 gui.resizable(False, False)
 gui['background']='#274472'
 
-
+gui.after(1000,setup)
 
 v1 = DoubleVar()
 v2 = DoubleVar()
@@ -75,7 +82,7 @@ frame_1.place(x=20,y=100)
 
 Label_Joint1_Scale = Label(frame_1, font = font.Font(size = 20, weight='bold'), anchor="center", fg = "black", text = "Joint1_Scale", bg="#C3E0E5")
 Label_Joint1_Scale.place(x = 50, y =20)
-Joint1_Bar = Scale( frame_1, variable=v1, from_ = 0, to = 180, font=font.Font(size = 15), orient = HORIZONTAL,length = 250,width = 40, bg = "#41729F", fg = 'white')
+Joint1_Bar = Scale( frame_1, variable=v1, from_ = 0, to = 1000, font=font.Font(size = 15), orient = HORIZONTAL,length = 250,width = 40, bg = "#41729F", fg = 'white')
 Joint1_Bar.place(x = 20, y = 60)
 
 Label_Joint2_Scale = Label(frame_1, font = font.Font(size = 20, weight='bold'), anchor="center", fg = "black", text = "Joint2_Scale", bg="#C3E0E5")
