@@ -34,18 +34,16 @@ def send_data():
     show_2.config(text= Joint2_Bar.get())
     msg = JointState()
     msg.name = ['joint1', 'joint2']
-    msg.position = [(Joint1_Bar.get()*0.056)*10**-3,-Joint2_Bar.get()*10**-3]
+    msg.position = [(Joint1_Bar.get()*0.056)*10**-3,(-Joint2_Bar.get()*0.47)*10**-3]
     msg.header.stamp = rospy.Time.now()
     Jointpub.publish(msg)
     pub_Joint2.publish(Joint2_Bar.get())
     pub_Joint1.publish(Joint1_Bar.get())
 
 def setup():
-    show_1.config(text= Joint1_Bar.get())
-    show_2.config(text= Joint2_Bar.get())
     msg = JointState()
     msg.name = ['joint1', 'joint2']
-    msg.position = [(Joint1_Bar.get()*0.056)*10**-3,-Joint2_Bar.get()*10**-3]
+    msg.position = [(Joint1_Bar.get()*0.056)*10**-3,(-Joint2_Bar.get()*0.47)*10**-3]
     msg.header.stamp = rospy.Time.now()
     Jointpub.publish(msg)
     pub_Joint2.publish(0)

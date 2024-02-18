@@ -26,6 +26,15 @@ boolean A_set = false;
 boolean B_set = false;
 int laststeppos = 0;
 
+const int numReadings = 10;
+
+int readings[numReadings];  // the readings from the analog input
+int readIndex = 0;          // the index of the current reading
+int total = 0;              // the running total
+int average = 0;            // the average
+
+int inputPin = A0;
+
 void servocontrol(const std_msgs::Int16& cmd_msg)
 {
   int value = cmd_msg.data;
@@ -75,6 +84,9 @@ void setup()
    pinMode(stepPin,OUTPUT); 
    pinMode(dirPin,OUTPUT);
    servo.attach(12);
+   for (int thisReading = 0; thisReading < numReadings; thisReading++) {
+    readings[thisReading] = 0;
+  }
    nh.initNode();
    nh.advertise(Encodepub);
    nh.subscribe(encodersub);
@@ -87,8 +99,17 @@ float floatMap(float x, float in_min, float in_max, float out_min, float out_max
 }
 
 void loop() { 
-  int poten = analogRead(A5);
-  float voltage = floatMap(poten, 0, 1023, 0, 180);
+  total = total - readings[readIndex];
+  readings[readIndex] = analogRead(inputPin);
+  total = total + readings[readIndex];
+  readIndex = readIndex + 1;
+  if (readIndex >= numReadings) 
+  {
+    readIndex = 0;
+  }
+  average = total / numReadings;
+  //average = analogRead(inputPin);
+  float voltage = floatMap(average, 0, 1023, 0, 180);
   potenData.data = voltage;
   Potenpub.publish(&potenData);
   rotating = true;  // reset the debouncer
