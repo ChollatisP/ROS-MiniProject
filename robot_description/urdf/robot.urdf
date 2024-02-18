@@ -3,22 +3,23 @@
 <robot name = "Robot_Arm">
 
 <!-- base link -->
-<link name = "base_link"/>
+<link name="base_link">
+    <visual>
+        <geometry>
+            <mesh filename="package://robot_description/STL/base.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <origin xyz="0 -0.05 -0.55" rpy="1.56 0 1.56"/>
+    </visual>
+</link>
+
 <!-- link 1-->
 <link name = "link1">
     <visual>
         <geometry>
-            <box size="0.2 1 0.05"/>
+            <mesh filename="package://robot_description/STL/slider.stl" scale="0.001 0.001 0.001"/>
         </geometry>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="0.095 -0.025 0.075" rpy="1.56 0 1.56"/>
     </visual>
-
-    <collision>
-        <geometry>
-            <box size="0.2 1 0.05"/>
-        </geometry>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-    </collision>
 
     <inertial>
         <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -31,8 +32,8 @@
 <joint name="joint1" type="prismatic">
     <parent link="base_link"/>
     <child link="link1"/>
-    <origin xyz="0 0 0.075" rpy="1.56 0 0"/>
-    <axis xyz="0 1 0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
     <limit lower="-0.4" upper="0.4" effort="100" velocity="1"/> 
 </joint>
 
@@ -40,17 +41,10 @@
 <link name = "link2">
     <visual>
         <geometry>
-            <box size="0.2 1 0.05"/>
+            <mesh filename="package://robot_description/STL/link2.stl" scale="0.001 0.001 0.001"/>
         </geometry>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="0.145 -0.045 0.125" rpy="1.56 0 1.56"/>
     </visual>
-
-    <collision>
-        <geometry>
-            <box size="0.2 1 0.05"/>
-        </geometry>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-    </collision>
 
     <inertial>
         <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -63,7 +57,7 @@
 <joint name="joint2" type="prismatic">
     <parent link="link1"/>
     <child link="link2"/>
-    <origin xyz="0 0 0.075" rpy="1.56 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
     <axis xyz="0 1 0"/>
     <limit lower="-0.4" upper="0.4" effort="100" velocity="1"/> 
 </joint>

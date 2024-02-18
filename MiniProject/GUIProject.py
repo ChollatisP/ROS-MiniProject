@@ -16,7 +16,7 @@ def Talker(val):
 	cmd_val = Int16(val)
 	rospy.loginfo(cmd_val)
 	pub.publish(cmd_val)'''
-def get_data():
+def Mode():
     global mode
     mode = ~mode
 
@@ -38,8 +38,8 @@ def send_data():
     show_2.config(text= Joint2_Bar.get())
     msg = JointState()
     msg.name = ['joint1', 'joint2']
-    msg.position = [Joint1_Bar.get(),Joint2_Bar.get()]
-    msg.header.stamp = rospy.Time.now();
+    msg.position = [Joint1_Bar.get()*10**-3,Joint2_Bar.get()*10**-3]
+    msg.header.stamp = rospy.Time.now()
     Jointpub.publish(msg)
     pub_Joint1.publish(Joint1_Bar.get())
     pub_Joint2.publish(Joint2_Bar.get())
@@ -75,12 +75,12 @@ frame_1.place(x=20,y=100)
 
 Label_Joint1_Scale = Label(frame_1, font = font.Font(size = 20, weight='bold'), anchor="center", fg = "black", text = "Joint1_Scale", bg="#C3E0E5")
 Label_Joint1_Scale.place(x = 50, y =20)
-Joint1_Bar = Scale( frame_1, variable=v1, from_ = 0, to = 100, font=font.Font(size = 15), orient = HORIZONTAL,length = 250,width = 40, bg = "#41729F", fg = 'white')
+Joint1_Bar = Scale( frame_1, variable=v1, from_ = 0, to = 180, font=font.Font(size = 15), orient = HORIZONTAL,length = 250,width = 40, bg = "#41729F", fg = 'white')
 Joint1_Bar.place(x = 20, y = 60)
 
 Label_Joint2_Scale = Label(frame_1, font = font.Font(size = 20, weight='bold'), anchor="center", fg = "black", text = "Joint2_Scale", bg="#C3E0E5")
 Label_Joint2_Scale.place(x = 50, y = 150)
-Joint2_Bar = Scale( frame_1, variable=v2, from_ = 0, to = 100, font=font.Font(size = 15), orient = HORIZONTAL,length = 250,width = 40, bg = "#41729F", fg = 'white')
+Joint2_Bar = Scale( frame_1, variable=v2, from_ = 0, to = 180, font=font.Font(size = 15), orient = HORIZONTAL,length = 250,width = 40, bg = "#41729F", fg = 'white')
 Joint2_Bar.place(x = 20, y = 190)
 
 
@@ -105,7 +105,7 @@ show_2.place(x = 220, y=65)
 
 
 
-frame_3=Frame(gui, bg="#C3E0E5",highlightbackground="#41729F",highlightthickness=5, width=300, height=130)
+frame_3=Frame(gui, bg="#C3E0E5",highlightbackground="#41729F",highlightthickness=5, width=300, height=130,)
 frame_3.place(x=340,y=250)
 
 Label_Feedback = Label(frame_3, font = font.Font(size = 25, weight='bold'), anchor="center", fg = "black", text = "Feedback", bg="#C3E0E5")
@@ -132,11 +132,9 @@ Submit.place(x = 45, y = 280)
 Home = tk.Button(frame_1,font = font.Font(size = 15, weight='bold'), anchor="center", fg = "white", text = "Home", bg = "brown", command = reset)
 Home.place(x = 155,y = 280)
 
-Get_Data = tk.Button(gui,font = font.Font(size = 15, weight='bold'), anchor="center", fg = "white", text = "Mode", bg = "green", command = get_data)
-Get_Data.place(x = 440,y = 400)
+Change_Mode = tk.Button(gui,font = font.Font(size = 15, weight='bold'), anchor="center", fg = "white", text = "Mode", bg = "green", command = Mode)
+Change_Mode.place(x = 440,y = 400)
 
-'''Clear = tk.Button(frame_2,font = font.Font(size = 15, weight='bold'), anchor="center", fg = "white", text = "Clear", bg = "brown", command = clear)
-Clear.place(x = 175,y = 310)'''
 #button
 
 gui.mainloop()

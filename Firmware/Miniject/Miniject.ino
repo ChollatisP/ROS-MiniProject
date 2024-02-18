@@ -7,11 +7,11 @@
 #define encoderPinB 3
 #define clearButton 8
 
-ros::NodeHandle  nh;
+ros::NodeHandle nh;
 std_msgs::Int16 encoderData;
 std_msgs::Int16 potenData;
-const int stepPin = 3; 
-const int dirPin = 2; 
+const int stepPin = 7; 
+const int dirPin = 4; 
 
 Servo servo;
 
@@ -37,29 +37,33 @@ void stepcontrol(const std_msgs::Int16& cmd_msg)
   int value = cmd_msg.data;
   if (value > laststeppos)
   {
-    int timecheck = value-laststeppos;
     digitalWrite(dirPin,HIGH);
-    digitalWrite(stepPin,HIGH);
-    delay(timecheck*1000);
-    digitalWrite(stepPin,LOW);
+    int timecheck = value-laststeppos;
+    for(int x = 0; x < timecheck; x++) 
+    {
+      digitalWrite(stepPin,HIGH); 
+      delayMicroseconds(500); 
+      digitalWrite(stepPin,LOW); 
+      delayMicroseconds(500); 
+    }
   }
   else if (value < laststeppos)
   {
-    int timecheck = value-laststeppos;
     digitalWrite(dirPin,LOW);
-    digitalWrite(stepPin,HIGH);
-    delay(timecheck*1000);
-    digitalWrite(stepPin,LOW);
-  }
-  else
-  {
-    digitalWrite(stepPin,LOW);
+    int timecheck = laststeppos-value;
+    for(int x = 0; x < timecheck; x++) 
+    {
+      digitalWrite(stepPin,HIGH); 
+      delayMicroseconds(500); 
+      digitalWrite(stepPin,LOW); 
+      delayMicroseconds(500); 
+    }
   }
   laststeppos = value;
 }
 
 ros::Subscriber<std_msgs::Int16> potensub("Topic_Input_Joint2", &servocontrol );
-ros::Subscriber<std_msgs::UInt16> encodersub("Topic_Input_Joint1", &stepcontrol);
+ros::Subscriber<std_msgs::Int16> encodersub("Topic_Input_Joint1", &stepcontrol);
 
 void setup() 
 { 
@@ -70,9 +74,12 @@ void setup()
    attachInterrupt(1, doEncoderB, CHANGE); //ทำงานแบบ interrupt เบอร์ 1 ในนี้คือขา pin 3
    pinMode(stepPin,OUTPUT); 
    pinMode(dirPin,OUTPUT);
+   servo.attach(12);
    nh.initNode();
-   nh.advertise(Encodepub);  
+   nh.advertise(Encodepub);
+   nh.subscribe(encodersub);
    nh.advertise(Potenpub);
+   nh.subscribe(potensub);
  } 
 
 float floatMap(float x, float in_min, float in_max, float out_min, float out_max) {
