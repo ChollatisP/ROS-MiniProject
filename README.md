@@ -1,10 +1,10 @@
 # Project Title
 
-Simple overview of use/purpose.
+ROS Miniproject.
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+ROS Miniproject for PP robot control with Encoder and Potentiometer using Arduino UNO R3.
 
 ## Getting Started
 
