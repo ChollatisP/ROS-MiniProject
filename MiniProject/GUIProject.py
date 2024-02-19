@@ -10,11 +10,26 @@ from std_msgs.msg import Int16
 rospy.init_node("RobotArm_Control")
 rate = rospy.Rate(10)
 mode = 1
-
-
 def Mode():
     global mode
     mode = ~mode
+    if Change_Mode['text']=='Manual':
+        Change_Mode.configure(text='GUI Control')
+    elif Change_Mode['text']=='GUI Control':
+        Change_Mode.configure(text='Manual')
+
+def reset():
+    Joint2_Bar.set(0)
+    Joint1_Bar.set(0)
+
+def On():
+    BTN_On.configure(bg='green')
+    BTN_Off.configure(bg='gray')
+    
+def Off():
+    BTN_On.configure(bg='gray')
+    BTN_Off.configure(bg='brown')
+
 
 def read_encoder(encode_val):
     sensor_1_read = encode_val.data
@@ -24,10 +39,6 @@ def read_poten(potenval):
     sensor_2_read = potenval.data
     if mode==1:
         Joint2_Bar.set(sensor_2_read)
-
-def reset():
-    Joint2_Bar.set(0)
-    Joint1_Bar.set(0)
 
 def send_data():
     show_1.config(text= Joint1_Bar.get())
@@ -90,55 +101,64 @@ Joint2_Bar.place(x = 20, y = 190)
 
 
 
-frame_2=Frame(gui, bg="#C3E0E5",highlightbackground="#41729F",highlightthickness=5, width=300, height=130)
+frame_2=Frame(gui, bg="#C3E0E5",highlightbackground="#41729F",highlightthickness=5, width=300, height=260)
 frame_2.place(x=340,y=100)
 
 Label_Input = Label(frame_2, font = font.Font(size = 25, weight='bold'), anchor="center", fg = "black", text = "Input", bg="#C3E0E5")
 Label_Input.place(x = 90, y = 15)
 
-Label_Joint1 = Label(frame_2, font = font.Font(size = 15, weight='bold'), anchor="center", fg = "black", text = "Joint1", bg="#C3E0E5")
-Label_Joint1.place(x = 15, y = 70)
+Label_Joint1 = Label(frame_2, font = font.Font(size = 17, weight='bold'), anchor="center", fg = "black", text = "Joint1", bg="#C3E0E5")
+Label_Joint1.place(x = 45, y = 70)
 
-show_1= Label(frame_2, text="0", font=('Helvetica 20'), bg='#C3E0E5', fg='red',highlightbackground="black",highlightthickness=2,width=3)
-show_1.place(x = 85, y=65)
+show_1= Label(frame_2, text="0", font=('Helvetica 40'), bg='#C3E0E5', fg='red',highlightbackground="black",highlightthickness=2,width=3)
+show_1.place(x = 30, y=110)
 
-Label_Joint2 = Label(frame_2, font = font.Font(size = 15, weight='bold'), anchor="center", fg = "black", text = "Joint2", bg="#C3E0E5")
-Label_Joint2.place(x = 150, y = 70)
+Label_Joint2 = Label(frame_2, font = font.Font(size = 17, weight='bold'), anchor="center", fg = "black", text = "Joint2", bg="#C3E0E5")
+Label_Joint2.place(x = 170, y = 70)
 
-show_2= Label(frame_2, text="0", font=('Helvetica 20'), bg='#C3E0E5', fg='red',highlightbackground="black",highlightthickness=2,width=3)
-show_2.place(x = 220, y=65)
+show_2= Label(frame_2, text="0", font=('Helvetica 40'), bg='#C3E0E5', fg='red',highlightbackground="black",highlightthickness=2,width=3)
+show_2.place(x = 160, y=110)
 
-
-
-frame_3=Frame(gui, bg="#C3E0E5",highlightbackground="#41729F",highlightthickness=5, width=300, height=130,)
-frame_3.place(x=340,y=250)
-
-Label_Feedback = Label(frame_3, font = font.Font(size = 25, weight='bold'), anchor="center", fg = "black", text = "Feedback", bg="#C3E0E5")
-Label_Feedback.place(x = 50, y = 15)
-
-Label_Joint1 = Label(frame_3, font = font.Font(size = 15, weight='bold'), anchor="center", fg = "black", text = "Joint1", bg="#C3E0E5")
-Label_Joint1.place(x = 15, y = 70)
-
-Feedback_1= Label(frame_3, text="0", font=('Helvetica 20'), bg='#C3E0E5', fg='red',highlightbackground="black",highlightthickness=2,width=3)
-Feedback_1.place(x = 85, y=65)
-
-Label_Joint2 = Label(frame_3, font = font.Font(size = 15, weight='bold'), anchor="center", fg = "black", text = "Joint2", bg="#C3E0E5")
-Label_Joint2.place(x = 150, y = 70)
-
-Feedback_2= Label(frame_3, text="0", font=('Helvetica 20'), bg='#C3E0E5', fg='red',highlightbackground="black",highlightthickness=2,width=3)
-Feedback_2.place(x = 220, y=65)
+Label_Change_Mode = Label(frame_2, font = font.Font(size = 15, weight='bold'), anchor="center", fg = "black", text = "Mode:", bg="#C3E0E5")
+Label_Change_Mode.place(x = 40, y = 207)
 
 
 
-#button
-Submit = tk.Button(frame_1,font = font.Font(size = 15, weight='bold'), anchor="center", fg = "white", text = "Submit", bg = "green", command = send_data)
-Submit.place(x = 45, y = 280)
+# frame_3=Frame(gui, bg="#C3E0E5",highlightbackground="#41729F",highlightthickness=5, width=300, height=130,)
+# frame_3.place(x=340,y=250)
+
+# Label_Feedback = Label(frame_3, font = font.Font(size = 25, weight='bold'), anchor="center", fg = "black", text = "Feedback", bg="#C3E0E5")
+# Label_Feedback.place(x = 50, y = 15)
+
+# Label_Joint1 = Label(frame_3, font = font.Font(size = 15, weight='bold'), anchor="center", fg = "black", text = "Joint1", bg="#C3E0E5")
+# Label_Joint1.place(x = 15, y = 70)
+
+# Feedback_1= Label(frame_3, text="0", font=('Helvetica 20'), bg='#C3E0E5', fg='red',highlightbackground="black",highlightthickness=2,width=3)
+# Feedback_1.place(x = 85, y=65)
+
+# Label_Joint2 = Label(frame_3, font = font.Font(size = 15, weight='bold'), anchor="center", fg = "black", text = "Joint2", bg="#C3E0E5")
+# Label_Joint2.place(x = 150, y = 70)
+
+# Feedback_2= Label(frame_3, text="0", font=('Helvetica 20'), bg='#C3E0E5', fg='red',highlightbackground="black",highlightthickness=2,width=3)
+# Feedback_2.place(x = 220, y=65)
+
+
+
+# #button
+# Submit = tk.Button(frame_1,font = font.Font(size = 15, weight='bold'), anchor="center", fg = "white", text = "Submit", bg = "green", command = send_data)
+# Submit.place(x = 45, y = 280)
 
 Home = tk.Button(frame_1,font = font.Font(size = 15, weight='bold'), anchor="center", fg = "white", text = "Home", bg = "brown", command = reset)
 Home.place(x = 155,y = 280)
 
-Change_Mode = tk.Button(gui,font = font.Font(size = 15, weight='bold'), anchor="center", fg = "white", text = "Mode", bg = "green", command = Mode)
-Change_Mode.place(x = 440,y = 400)
+Change_Mode = tk.Button(frame_2,font = font.Font(size = 15, weight='bold'), anchor="center",width=10, fg = "white", text = "Manual", bg = "green", command = Mode)
+Change_Mode.place(x = 105,y = 200)
+
+BTN_On = tk.Button(gui,font = font.Font(size = 15, weight='bold'), anchor="center", fg = "white", text = "ON", bg = "gray",activebackground='green',activeforeground='white',width=5, command = On)
+BTN_On.place(x = 410,y = 390)
+
+BTN_Off = tk.Button(gui,font = font.Font(size = 15, weight='bold'), anchor="center", fg = "white", text = "OFF", bg = "brown",activebackground='red',activeforeground='white',width=5, command = Off)
+BTN_Off.place(x = 490,y = 390)
 
 #button
 
