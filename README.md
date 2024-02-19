@@ -1,82 +1,78 @@
-# Project Title
-
-ROS Miniproject.
+# ROS Miniproject
 
 ## Description
 
-ROS Miniproject for PP robot control with Encoder and Potentiometer using Arduino UNO R3.
+ROS Miniproject for PP robot control with Python GUI, Encoder and Potentiometer using Arduino UNO R3.
 
-## Getting Started
+## Component
 
-### Dependencies
-
-#### Software
+### Software
 * Ubuntu 20.04
-* ROS Noetic version ....
+
+* ROS Noetic 
+
+* Python3
+
 * Arduino 18.....
+
 * Arduino ROS Library
-#### Hardware
-* 50k Potentiometer
-* Rotary Encoder
-    - KY-040 Rotary Encoder (WH-040)
-* 180 degree Servo
-    - MG90S Servo motor
-* Stepper motor
-    - Usongshine 17hs4401
-* Driver Stepper motor
-    - DRV8825 Stepper motor driver board
+
+### Hardware
+* Arduino UNO R3
+
+* 50K Potentiometer
+
+* KY-040 Rotary Encoder (WH-040)
+
+* MG90S Servo motor
+
+* Usongshine 17hs4401 (Stepper motor)
+
+* DRV8825 Stepper motor driver board
+
 * 12V or Higher Power supply 
 
-### Installing
+* Photoboard (Optional)
+
+## Installing
 
 * Connect Potentiometer into Arduino using A0 pin on Arduino
-* Run this Command
+
+* Connect Encoder into Arduino 
+    - PinA 2
+    - PinB 3
+    - Clear 8
+* Connect Stepper motor
+* 
+* Run this Command in terminal
 ```
 cd catkin_ws/src
 git clone https://github.com/ChollatisP/ROS-MiniProject.git
+cd catkin_ws
+catkin_make
 ```
 * Open Firmware directory and continue to miniject directory and open Miniject.ino
 * Upload Miniject.ino into your Arduino
 
 ### Executing program
 
-* How to run the program
-* Step-by-step bullets
+* Run this command on your terminal
 ```
-code blocks for commands
-```
-
-## Help
-
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
+roslaunch robotarm rviz.launch
 ```
 
 ## Authors
 
-Contributors names and contact info
+* Chollatis Petchsing 6452500023
+* Kantawit    6452500198
+* Komgrid Petchpayub 6452500392
 
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
-
-## Version History
-
-* 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
-* 0.1
-    * Initial Release
-
-## License
-
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
 
 ## Acknowledgments
 
 Inspiration, code snippets, etc.
-* [awesome-readme](https://github.com/matiassingers/awesome-readme)
-* [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
-* [dbader](https://github.com/dbader/readme-template)
-* [zenorocha](https://gist.github.com/zenorocha/4526327)
-* [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
+* [Potentiometer Stabilizer](https://docs.arduino.cc/built-in-examples/analog/Smoothing/)
+* [Simple Readme](https://gist.github.com/DomPizzie/7a5ff55ffa9081f2de27c315f5018afc)
+* [Rotary Encoder](https://forum.arduino.cc/t/rotary-encoder-increment-decrement/858119)
+* [Stepper Motor Control](https://howtomechatronics.com/tutorials/arduino/how-to-control-stepper-motor-with-a4988-driver-and-arduino/)
+
