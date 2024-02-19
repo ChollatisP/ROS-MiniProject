@@ -10,18 +10,26 @@ ROS Miniproject for PP robot control with Encoder and Potentiometer using Arduin
 
 ### Dependencies
 
+#### Software
 * Ubuntu 20.04
 * ROS Noetic version ....
 * Arduino 18.....
 * Arduino ROS Library
+#### Hardware
 * 50k Potentiometer
 * Rotary Encoder
+    - KY-040 Rotary Encoder (WH-040)
 * 180 degree Servo
-* Stepper Motor and driver board
+    - MG90S Servo motor
+* Stepper motor
+    - Usongshine 17hs4401
+* Driver Stepper motor
+    - DRV8825 Stepper motor driver board
 * 12V or Higher Power supply 
 
 ### Installing
 
+* Connect Potentiometer into Arduino using A0 pin on Arduino
 * Run this Command
 ```
 cd catkin_ws/src
