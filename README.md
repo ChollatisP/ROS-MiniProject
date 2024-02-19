@@ -4,6 +4,19 @@
 
 ROS Miniproject for PP robot control with Python GUI, Encoder and Potentiometer using Arduino UNO R3.
 
+## Table of Content
+- [ROS Miniproject](#ros-miniproject)
+  - [Description](#description)
+  - [Table of Content](#table-of-content)
+  - [Component](#component)
+    - [Software](#software)
+    - [Hardware](#hardware)
+  - [Installing](#installing)
+    - [Executing program](#executing-program)
+  - [Authors](#authors)
+  - [Acknowledgments](#acknowledgments)
+
+
 ## Component
 
 ### Software
@@ -43,14 +56,16 @@ ROS Miniproject for PP robot control with Python GUI, Encoder and Potentiometer 
     - PinB 3
     - Clear 8
 * Connect Stepper motor
-* 
+
 * Run this Command in terminal
+
 ```
 cd catkin_ws/src
 git clone https://github.com/ChollatisP/ROS-MiniProject.git
 cd catkin_ws
 catkin_make
 ```
+
 * Open Firmware directory and continue to miniject directory and open Miniject.ino
 * Upload Miniject.ino into your Arduino
 
@@ -64,7 +79,9 @@ roslaunch robotarm rviz.launch
 ## Authors
 
 * Chollatis Petchsing 6452500023
-* Kantawit    6452500198
+
+* Kantawit Panyateang 6452500198
+
 * Komgrid Petchpayub 6452500392
 
 
@@ -72,7 +89,15 @@ roslaunch robotarm rviz.launch
 
 Inspiration, code snippets, etc.
 * [Potentiometer Stabilizer](https://docs.arduino.cc/built-in-examples/analog/Smoothing/)
-* [Simple Readme](https://gist.github.com/DomPizzie/7a5ff55ffa9081f2de27c315f5018afc)
+
 * [Rotary Encoder](https://forum.arduino.cc/t/rotary-encoder-increment-decrement/858119)
+
 * [Stepper Motor Control](https://howtomechatronics.com/tutorials/arduino/how-to-control-stepper-motor-with-a4988-driver-and-arduino/)
 
+* [Tkinter_tutorial1](https://pythonexamples.org/python-tkinter/)
+
+* [Tkinter_tutorial2](https://www.geeksforgeeks.org/create-first-gui-application-using-python-tkinter/?ref=lbp)
+
+* [Launch file](https://dev.to/admantium/robot-operating-system-creating-a-robot-simulation-45f1) 
+
+* [Simple Readme](https://gist.github.com/DomPizzie/7a5ff55ffa9081f2de27c315f5018afc)
