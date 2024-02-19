@@ -10,13 +10,25 @@ ROS Miniproject for PP robot control with Encoder and Potentiometer using Arduin
 
 ### Dependencies
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
+* Ubuntu 20.04
+* ROS Noetic version ....
+* Arduino 18.....
+* Arduino ROS Library
+* 50k Potentiometer
+* Rotary Encoder
+* 180 degree Servo
+* Stepper Motor and driver board
+* 12V or Higher Power supply 
 
 ### Installing
 
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+* Run this Command
+```
+cd catkin_ws/src
+git clone https://github.com/ChollatisP/ROS-MiniProject.git
+```
+* Open Firmware directory and continue to miniject directory and open Miniject.ino
+* Upload Miniject.ino into your Arduino
 
 ### Executing program
 
