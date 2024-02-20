@@ -115,9 +115,9 @@ void loop() {
   rotating = true;  // reset the debouncer
   if (lastReportedPos != encoderPos) {
     int newencoderPos;
-    if (encoderPos>=100)
+    if (encoderPos>=7)
     {
-      newencoderPos = 100;
+      newencoderPos = 7;
     }
     else if (encoderPos<=0)
     {

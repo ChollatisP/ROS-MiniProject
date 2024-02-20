@@ -1,62 +1,103 @@
-# Project Title
-
-Simple overview of use/purpose.
+# ROS Miniproject
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+ROS Miniproject for PP robot control with Python GUI, Encoder and Potentiometer using Arduino UNO R3.
 
-## Getting Started
+## Table of Content
+- [ROS Miniproject](#ros-miniproject)
+  - [Description](#description)
+  - [Table of Content](#table-of-content)
+  - [Component](#component)
+    - [Software](#software)
+    - [Hardware](#hardware)
+  - [Installing](#installing)
+    - [Executing program](#executing-program)
+  - [Authors](#authors)
+  - [Acknowledgments](#acknowledgments)
 
-### Dependencies
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
+## Component
 
-### Installing
+### Software
+* Ubuntu 20.04
 
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+* ROS Noetic 
+
+* Python3
+
+* Arduino 18.....
+
+* Arduino ROS Library
+
+### Hardware
+* Arduino UNO R3
+
+* 50K Potentiometer
+
+* KY-040 Rotary Encoder (WH-040)
+
+* MG90S Servo motor
+
+* Usongshine 17hs4401 (Stepper motor)
+
+* DRV8825 Stepper motor driver board
+
+* 12V or Higher Power supply 
+
+* Photoboard (Optional)
+
+## Installing
+
+* Connect Potentiometer into Arduino using A0 pin on Arduino
+
+* Connect Encoder into Arduino 
+    - PinA 2
+    - PinB 3
+    - Clear 8
+* Connect Stepper motor
+
+* Run this Command in terminal
+
+```
+cd catkin_ws/src
+git clone https://github.com/ChollatisP/ROS-MiniProject.git
+cd catkin_ws
+catkin_make
+```
+
+* Open Firmware directory and continue to miniject directory and open Miniject.ino
+* Upload Miniject.ino into your Arduino
 
 ### Executing program
 
-* How to run the program
-* Step-by-step bullets
+* Run this command on your terminal
 ```
-code blocks for commands
-```
-
-## Help
-
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
+roslaunch robotarm rviz.launch
 ```
 
 ## Authors
 
-Contributors names and contact info
+* Chollatis Petchsing 6452500023
 
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
+* Kantawit Panyateang 6452500198
 
-## Version History
+* Komgrid Petchpayub 6452500392
 
-* 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
-* 0.1
-    * Initial Release
-
-## License
-
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
 
 ## Acknowledgments
 
 Inspiration, code snippets, etc.
-* [awesome-readme](https://github.com/matiassingers/awesome-readme)
-* [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
-* [dbader](https://github.com/dbader/readme-template)
-* [zenorocha](https://gist.github.com/zenorocha/4526327)
-* [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
+* [Potentiometer Stabilizer](https://docs.arduino.cc/built-in-examples/analog/Smoothing/)
+
+* [Rotary Encoder](https://forum.arduino.cc/t/rotary-encoder-increment-decrement/858119)
+
+* [Stepper Motor Control](https://howtomechatronics.com/tutorials/arduino/how-to-control-stepper-motor-with-a4988-driver-and-arduino/)
+
+* [Tkinter_tutorial1](https://pythonexamples.org/python-tkinter/)
+
+* [Tkinter_tutorial2](https://www.geeksforgeeks.org/create-first-gui-application-using-python-tkinter/?ref=lbp)
+
+* [Launch file](https://dev.to/admantium/robot-operating-system-creating-a-robot-simulation-45f1) 
+
+* [Simple Readme](https://gist.github.com/DomPizzie/7a5ff55ffa9081f2de27c315f5018afc)
