@@ -120,7 +120,7 @@ show_2= Label(frame_2, text="0", font=('Helvetica 40'), bg='#C3E0E5', fg='red',h
 show_2.place(x = 160, y=110)
 
 Label_Change_Mode = Label(frame_2, font = font.Font(size = 15, weight='bold'), anchor="center", fg = "black", text = "Mode:", bg="#C3E0E5")
-Label_Change_Mode.place(x = 40, y = 207)
+Label_Change_Mode.place(x = 25, y = 207)
 
 
 
@@ -144,18 +144,18 @@ Label_Change_Mode.place(x = 40, y = 207)
 
 
 
-# #button
-# Submit = tk.Button(frame_1,font = font.Font(size = 15, weight='bold'), anchor="center", fg = "white", text = "Submit", bg = "green", command = send_data)
-# Submit.place(x = 45, y = 280)
+#button
+Submit = tk.Button(frame_1,font = font.Font(size = 15, weight='bold'), anchor="center", fg = "white", text = "Submit", bg = "green", command = send_data)
+Submit.place(x = 45, y = 280)
 
 Home = tk.Button(frame_1,font = font.Font(size = 15, weight='bold'), anchor="center", fg = "white", text = "Home", bg = "brown", command = reset)
 Home.place(x = 155,y = 280)
 
-Change_Mode = tk.Button(frame_2,font = font.Font(size = 15, weight='bold'), anchor="center",width=10, fg = "white", text = "Manual", bg = "green", command = Mode)
-Change_Mode.place(x = 105,y = 200)
+Change_Mode = tk.Button(frame_2,font = font.Font(size = 15, weight='bold'), anchor="center",width=10, fg = "white", text = "Manual", bg = "green",activebackground='gray',activeforeground='white', command = Mode)
+Change_Mode.place(x = 100,y = 200)
 
 BTN_On = tk.Button(gui,font = font.Font(size = 15, weight='bold'), anchor="center", fg = "white", text = "ON", bg = "gray",activebackground='green',activeforeground='white',width=5, command = On)
-BTN_On.place(x = 410,y = 390)
+BTN_On.place(x = 395,y = 390)
 
 BTN_Off = tk.Button(gui,font = font.Font(size = 15, weight='bold'), anchor="center", fg = "white", text = "OFF", bg = "brown",activebackground='red',activeforeground='white',width=5, command = Off)
 BTN_Off.place(x = 490,y = 390)
