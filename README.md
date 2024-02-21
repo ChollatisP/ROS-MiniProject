@@ -24,7 +24,7 @@ ROS Miniproject for PP robot control with Python GUI, Encoder and Potentiometer 
 ## CAD design
 ### - Base
 
-<img src="https://github.com/favicon.ico" width="48">
+<img src="(https://github.com/ChollatisP/ROS-MiniProject/blob/DONE/CAD_Assembly/base.png)" width="48">
 
 ### - Joint1
 
