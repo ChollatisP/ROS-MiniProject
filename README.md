@@ -74,7 +74,7 @@ ROS Miniproject for PP robot control with Python GUI, Encoder and Potentiometer 
 * Connect Servo motor
     - PWM(Orange) 12
     - Vcc(Red) to 5V
-    - Ground(Brown) to 
+    - Ground(Brown) to GND
 * Run this Command in terminal
 
 ```
