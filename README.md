@@ -52,9 +52,9 @@ ROS Miniproject for PP robot control with Python GUI, Encoder and Potentiometer 
 * Connect Potentiometer into Arduino using A0 pin on Arduino
 
 * Connect Encoder into Arduino 
-  - DT 2
-  - CLK 3
-  - SW 8
+  - DT to 2
+  - CLK to 3
+  - SW to 8
   - (+) to 5V
   - GND to GND
 * Connect Stepper motor
@@ -67,12 +67,12 @@ ROS Miniproject for PP robot control with Python GUI, Encoder and Potentiometer 
     - B-(Blue) to 1B
     - B(Red) to 2B
   - Driver Board into Arduino
-    - DIR 4
-    - STP 7
+    - DIR to 4
+    - STP to 7
     - FLT to 5V
     - GND to GND
 * Connect Servo motor
-    - PWM(Orange) 12
+    - PWM(Orange) to 12
     - Vcc(Red) to 5V
     - Ground(Brown) to GND
 * Run this Command in terminal
