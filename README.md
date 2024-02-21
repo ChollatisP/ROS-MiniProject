@@ -8,6 +8,11 @@ ROS Miniproject for PP robot control with Python GUI, Encoder and Potentiometer 
 - [ROS Miniproject](#ros-miniproject)
   - [Description](#description)
   - [Table of Content](#table-of-content)
+  - [CAD design](#cad-design)
+    - [- Base](#--base)
+    - [- Joint1](#--joint1)
+    - [- Joint2](#--joint2)
+  - [Assembly](#assembly)
   - [Component](#component)
     - [Software](#software)
     - [Hardware](#hardware)
@@ -16,6 +21,21 @@ ROS Miniproject for PP robot control with Python GUI, Encoder and Potentiometer 
   - [Authors](#authors)
   - [Acknowledgments](#acknowledgments)
 
+## CAD design
+### - Base
+
+![alt text](base.png =295x237)
+
+### - Joint1
+
+![alt text](Joint1.png =295x237)
+
+### - Joint2
+
+![alt text](Joint2.png =295x237)
+
+## Assembly
+![alt text](Assembly.png =427x270)
 
 ## Component
 
@@ -72,7 +92,7 @@ ROS Miniproject for PP robot control with Python GUI, Encoder and Potentiometer 
     - FLT to 5V
     - GND to GND
 * Connect Servo motor
-    - PWM(Orange) to 12
+    - PWM(Orange) 12
     - Vcc(Red) to 5V
     - Ground(Brown) to GND
 * Run this Command in terminal
