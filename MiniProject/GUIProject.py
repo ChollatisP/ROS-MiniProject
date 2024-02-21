@@ -34,6 +34,11 @@ def Off():
     global onstat
     BTN_On.configure(bg='gray')
     BTN_Off.configure(bg='brown')
+    msg = JointState()
+    msg.name = ['joint1', 'joint2']
+    msg.position = [0,0]
+    msg.header.stamp = rospy.Time.now()
+    Jointpub.publish(msg)
     pub_Joint2.publish(0)
     pub_Joint1.publish(0)
     onstat = 0
@@ -53,7 +58,7 @@ def send_data():
         show_2.config(text= Joint2_Bar.get())
         msg = JointState()
         msg.name = ['joint1', 'joint2']
-        msg.position = [(Joint1_Bar.get()*0.056)*10**-3,(-Joint2_Bar.get()*0.47)*10**-3]
+        msg.position = [(Joint1_Bar.get()*144*0.056)*10**-3,(-Joint2_Bar.get()*0.47)*10**-3]
         msg.header.stamp = rospy.Time.now()
         Jointpub.publish(msg)
         pub_Joint2.publish(Joint2_Bar.get())
