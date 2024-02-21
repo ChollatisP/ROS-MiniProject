@@ -26,9 +26,9 @@ ROS Miniproject for PP robot control with Python GUI, Encoder and Potentiometer 
 
 * Python3
 
-* Arduino 18.....
-
-* Arduino ROS Library
+* Arduino IDE 1.8.15
+  
+* [Arduino ROSSerial Library into Arduino IDE](https://wiki.ros.org/rosserial_arduino/Tutorials/Arduino%20IDE%20Setup)
 
 ### Hardware
 * Arduino UNO R3
@@ -52,11 +52,29 @@ ROS Miniproject for PP robot control with Python GUI, Encoder and Potentiometer 
 * Connect Potentiometer into Arduino using A0 pin on Arduino
 
 * Connect Encoder into Arduino 
-    - PinA 2
-    - PinB 3
-    - Clear 8
+  - DT 2
+  - CLK 3
+  - SW 8
+  - (+) to 5V
+  - GND to GND
 * Connect Stepper motor
-
+  - Power supply into Driver Board
+    - Power supply 12V to VMOD
+    - GND to GND
+  - Stepper into Driver Board
+    - A(Black) to 2A 
+    - A-(Green) to 1A
+    - B-(Blue) to 1B
+    - B(Red) to 2B
+  - Driver Board into Arduino
+    - DIR 4
+    - STP 7
+    - FLT to 5V
+    - GND to GND
+* Connect Servo motor
+    - PWM(Orange) 12
+    - Vcc(Red) to 5V
+    - Ground(Brown) to 
 * Run this Command in terminal
 
 ```
@@ -87,7 +105,6 @@ roslaunch robotarm rviz.launch
 
 ## Acknowledgments
 
-Inspiration, code snippets, etc.
 * [Potentiometer Stabilizer](https://docs.arduino.cc/built-in-examples/analog/Smoothing/)
 
 * [Rotary Encoder](https://forum.arduino.cc/t/rotary-encoder-increment-decrement/858119)
