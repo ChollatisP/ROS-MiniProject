@@ -67,8 +67,9 @@ ROS Miniproject for PP robot control with Python GUI, Encoder and Potentiometer 
 
 * Photoboard (Optional)
 
-## Installing
+## Installing and Executing program
 
+### Hardware
 * Connect Potentiometer into Arduino using A0 pin on Arduino
 
 * Connect Encoder into Arduino 
@@ -95,23 +96,41 @@ ROS Miniproject for PP robot control with Python GUI, Encoder and Potentiometer 
     - PWM(Orange) 12
     - Vcc(Red) to 5V
     - Ground(Brown) to GND
-* Run this Command in terminal
 
+### Software
+1. Go to source folder in your workspace by run this command.
+  
 ```
 cd catkin_ws/src
+```
+2. Clone all file in github repository by git clone command.
+
+```
 git clone https://github.com/ChollatisP/ROS-MiniProject.git
-cd catkin_ws
+```
+3. Go back to your workspace by this command.
+
+```
+cd ~/catkin_ws
+```
+4. Run catkin_make command to activate package to ROS environment.
+
+```
 catkin_make
+``` 
+5. Open Firmware directory and continue to miniject directory and open Miniject.ino
+
+6. Upload Miniject.ino into your Arduino
+
+7. Run this command on your terminal to launch code.
 ```
-
-* Open Firmware directory and continue to miniject directory and open Miniject.ino
-* Upload Miniject.ino into your Arduino
-
-### Executing program
-
-* Run this command on your terminal
+roslaunch robotarm rviz.launch port:="<--YOUR-PORT-->"
 ```
-roslaunch robotarm rviz.launch
+* Example -> My serial port is /dev/ttyUSB0. 
+* My command gona be like this.
+
+```
+roslaunch robotarm rviz.launch port:="/dev/ttyUSB0"
 ```
 
 ## Authors
