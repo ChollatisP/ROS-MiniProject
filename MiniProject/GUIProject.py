@@ -41,7 +41,7 @@ def Off():
 def read_encoder(encode_val):
     sensor_1_read = encode_val.data
     if mode==1:
-        Joint1_Bar.set(sensor_1_read*10)
+        Joint1_Bar.set(sensor_1_read)
 def read_poten(potenval):
     sensor_2_read = potenval.data
     if mode==1:
