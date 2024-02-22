@@ -125,8 +125,14 @@ catkin_make
 
 6. Upload Miniject.ino into your Arduino **This will show you your serial port**
 **and Do not forget to plug usb from arduino to your computer**
+7. Or sun this command to check port.
+```
+dmesg* Example -> My serial port is /dev/ttyUSB0. 
+* My command gona be like this.
 
-7. Run this command on your terminal to launch code.
+```
+
+8. Run this command on your terminal to launch code.
 ```
 roslaunch robotarm rviz.launch port:="<--YOUR-PORT-->"
 ```
