@@ -124,8 +124,9 @@ catkin_make
 5. Open Firmware directory and continue to miniject directory and open Miniject.ino
 
 6. Upload Miniject.ino into your Arduino **This will show you your serial port**
+*Do not forget to plug usb from arduino to your computer
 
-7. Run this command on your terminal to launch code.
+8. Run this command on your terminal to launch code.
 ```
 roslaunch robotarm rviz.launch port:="<--YOUR-PORT-->"
 ```
