@@ -99,7 +99,8 @@ ROS Miniproject for PP robot control with Python GUI, Encoder and Potentiometer 
     - PWM(Orange) 12
     - Vcc(Red) to 5V
     - Ground(Brown) to GND
-
+* Schematic
+![4A7D655A-D71E-4D24-81B0-C58020DBB39E](https://github.com/ChollatisP/ROS-MiniProject/assets/154317507/86c31914-e5fc-48b4-9717-89e67b729fea)
 ### Software
 1. Go to source folder in your workspace by run this command.
   
