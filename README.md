@@ -78,7 +78,10 @@ ROS Miniproject for PP robot control with Python GUI, Encoder and Potentiometer 
   - SW to 8
   - (+) to 5V
   - GND to GND
-* Connect Stepper motor
+* Connect Stepper
+  - Stepper Driver Board
+    - Jump SLP and RST
+    - [V.ref tunning](https://ardufocus.com/howto/a4988-motor-current-tuning/)
   - Power supply into Driver Board
     - Power supply 12V to VMOD
     - GND to GND
@@ -120,7 +123,7 @@ catkin_make
 ``` 
 5. Open Firmware directory and continue to miniject directory and open Miniject.ino
 
-6. Upload Miniject.ino into your Arduino
+6. Upload Miniject.ino into your Arduino **This will show you your serial port**
 
 7. Run this command on your terminal to launch code.
 ```
